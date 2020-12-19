@@ -21,8 +21,7 @@ if ! which docker >> /dev/null; then
 		apt-get update >> /dev/null
 		apt-get install docker-ce docker-ce-cli containerd.io
         ;;
-    *) echo "Ничего не ввели. Выполняем действие по умолчанию..."
-		exit 1
+    *) exit 1
         ;;
 	esac
 fi
@@ -36,8 +35,7 @@ if ! which docker-compose >> /dev/null; then
 		 curl -L "https://github.com/docker/compose/releases/download/1.27.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 		 chmod +x /usr/local/bin/docker-compose
         ;;
-    *) echo "Ничего не ввели. Выполняем действие по умолчанию..."
-		exit 1
+    *) exit 1
         ;;
 	esac
 fi
@@ -49,5 +47,4 @@ echo "\033[32mPhase 1: \033[33mInstall NuclearEngine Docker\033[m";
 docker-compose build;
 echo docker-compose up -d >> start.sh;
 echo "\033[32mPhase 1: \033[33mClone NuclearEngine repository\033[m";
-git clone https://github.com/Narleks/NarleksEngine.git ./nuclear;
 
